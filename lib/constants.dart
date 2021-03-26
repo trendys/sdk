@@ -8,7 +8,7 @@ abstract class Constants {
   static const int receiveTimeout = 3000;
 
   static final dioOptions = BaseOptions(
-    baseUrl: kReleaseMode ? Constants.productionUrl : Constants.stagingUrl,
+    baseUrl: Constants.productionUrl,
     connectTimeout: Constants.connectTimeout,
     receiveTimeout: Constants.receiveTimeout,
   );
