@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 abstract class Constants {
   static const String productionUrl = 'https://api.trendys.fr';
@@ -8,7 +7,6 @@ abstract class Constants {
   static const int receiveTimeout = 3000;
 
   static final dioOptions = BaseOptions(
-    baseUrl: kReleaseMode ? Constants.productionUrl : Constants.stagingUrl,
     connectTimeout: Constants.connectTimeout,
     receiveTimeout: Constants.receiveTimeout,
   );

@@ -3,15 +3,35 @@ import 'package:trendys_sdk/api_adapter.dart';
 import 'package:trendys_sdk/auth.dart';
 import 'package:trendys_sdk/constants.dart';
 
+enum Environment {
+  production,
+  staging,
+}
+
 class Api {
   ApiAdapter _apiAdapter;
   Auth _auth;
 
-  Api({String globalKey = 'trendys'}) {
-    Dio dio = Dio(Constants.dioOptions);
+  Api({Environment environment, String globalKey = 'trendys'}) {
+    final dioOptions = Constants.dioOptions;
+
+    switch (environment) {
+      case Environment.production:
+        dioOptions.baseUrl = Constants.productionUrl;
+        break;
+
+      case Environment.staging:
+        dioOptions.baseUrl = Constants.stagingUrl;
+        break;
+
+      default:
+        throw ArgumentError('environment is invalid');
+    }
+
+    Dio dio = Dio(dioOptions);
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (RequestOptions options) async => await _requestInterceptor(dio, options),
-      onError: _errorInterceptor,
+      onError: (DioError dioError) async => await _errorInterceptor(dio, dioError),
     ));
     _apiAdapter = ApiAdapter(dio);
     _auth = Auth(globalKey);
@@ -44,29 +64,18 @@ class Api {
     return options;
   }
 
-  Future<RequestOptions> _retryRequestInterceptor(Dio dio, RequestOptions options) async {
-    dio.interceptors.requestLock.lock();
-
-    String accessToken = await _auth.refreshToken();
-
-    options.headers['Authorization'] = 'Bearer $accessToken';
-
-    dio.interceptors.requestLock.unlock();
-
-    return options;
-  }
-
-  Future<void> _errorInterceptor(DioError dioError) async {
-    String refreshToken = await _auth.getRefreshToken();
-
-    if (refreshToken == null) return;
-
+  Future<void> _errorInterceptor(Dio dio, DioError dioError) async {
     switch (dioError.response.statusCode) {
       case 401:
-        Dio dio = Dio(Constants.dioOptions);
-        dio.interceptors.add(InterceptorsWrapper(
-          onRequest: (RequestOptions options) async => await _retryRequestInterceptor(dio, options),
-        ));
+        final newOptions = dioError.request;
+
+        dio.interceptors.requestLock.lock();
+
+        String accessToken = await _auth.refreshToken();
+
+        newOptions.headers['Authorization'] = 'Bearer $accessToken';
+
+        dio.interceptors.requestLock.unlock();
 
         await dio.request(
           dioError.request.path,
@@ -75,7 +84,7 @@ class Api {
           onReceiveProgress: dioError.request.onReceiveProgress,
           onSendProgress: dioError.request.onSendProgress,
           queryParameters: dioError.request.queryParameters,
-          options: dioError.request,
+          options: newOptions,
         );
 
         break;
