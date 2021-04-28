@@ -4,10 +4,12 @@ part 'session.g.dart';
 
 @JsonSerializable()
 class Session {
+  Session({
+    required this.refreshToken,
+  });
+
   @JsonKey(name: 'refresh_token')
   final String refreshToken;
-
-  Session({this.refreshToken});
 
   factory Session.fromJson(Map<String, dynamic> json) => _$SessionFromJson(json);
 

@@ -24,12 +24,8 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
 
 UserCreate _$UserCreateFromJson(Map<String, dynamic> json) {
   return UserCreate(
-    user: json['user'] == null
-        ? null
-        : User.fromJson(json['user'] as Map<String, dynamic>),
-    guest: json['guest'] == null
-        ? null
-        : Guest.fromJson(json['guest'] as Map<String, dynamic>),
+    user: User.fromJson(json['user'] as Map<String, dynamic>),
+    guest: Guest.fromJson(json['guest'] as Map<String, dynamic>),
   );
 }
 

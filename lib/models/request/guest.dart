@@ -4,9 +4,11 @@ part 'guest.g.dart';
 
 @JsonSerializable()
 class Guest {
-  final String id;
+  Guest({
+    required this.id,
+  });
 
-  Guest({this.id});
+  final String id;
 
   factory Guest.fromJson(Map<String, dynamic> json) => _$GuestFromJson(json);
 
@@ -15,9 +17,11 @@ class Guest {
 
 @JsonSerializable()
 class GuestCreate {
-  final Guest guest;
+  GuestCreate({
+    required this.guest,
+  });
 
-  GuestCreate({this.guest});
+  final Guest guest;
 
   factory GuestCreate.fromJson(Map<String, dynamic> json) => _$GuestCreateFromJson(json);
 

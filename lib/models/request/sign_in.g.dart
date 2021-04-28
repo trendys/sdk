@@ -8,9 +8,7 @@ part of 'sign_in.dart';
 
 SignIn _$SignInFromJson(Map<String, dynamic> json) {
   return SignIn(
-    user: json['user'] == null
-        ? null
-        : UserSignIn.fromJson(json['user'] as Map<String, dynamic>),
+    user: UserSignIn.fromJson(json['user'] as Map<String, dynamic>),
     guest: json['guest'] == null
         ? null
         : Guest.fromJson(json['guest'] as Map<String, dynamic>),

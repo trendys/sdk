@@ -5,13 +5,18 @@ part 'user.g.dart';
 
 @JsonSerializable()
 class User {
+  User({
+    required this.email,
+    required this.password,
+    required this.username,
+    required this.displayName,
+  });
+
   final String email;
   final String password;
   final String username;
   @JsonKey(name: 'display_name')
   final String displayName;
-
-  User({this.email, this.password, this.username, this.displayName});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
@@ -20,10 +25,10 @@ class User {
 
 @JsonSerializable()
 class UserCreate {
+  UserCreate({required this.user, required this.guest});
+
   final User user;
   final Guest guest;
-
-  UserCreate({this.user, this.guest});
 
   factory UserCreate.fromJson(Map<String, dynamic> json) => _$UserCreateFromJson(json);
 

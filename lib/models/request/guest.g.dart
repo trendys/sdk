@@ -18,9 +18,7 @@ Map<String, dynamic> _$GuestToJson(Guest instance) => <String, dynamic>{
 
 GuestCreate _$GuestCreateFromJson(Map<String, dynamic> json) {
   return GuestCreate(
-    guest: json['guest'] == null
-        ? null
-        : Guest.fromJson(json['guest'] as Map<String, dynamic>),
+    guest: Guest.fromJson(json['guest'] as Map<String, dynamic>),
   );
 }
 
