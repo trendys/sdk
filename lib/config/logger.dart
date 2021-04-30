@@ -20,6 +20,8 @@ class Logger {
   Logger() : _lock = Lock();
 
   Future<void> newSession() async {
+    if (kIsWeb) return;
+
     _logDirectory ??= await _resolveMainLogDirectory();
     _logDirectoryPrevious ??= _getPreviousLogDirectory();
     _logFile ??= _getLogFile();
