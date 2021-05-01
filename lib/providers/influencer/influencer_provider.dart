@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:trendys_sdk/models/filters/package.dart';
 import 'package:trendys_sdk/models/filters/paginate.dart';
 import 'package:trendys_sdk/models/http_response.dart';
 import 'package:trendys_sdk/models/responses/common/action.dart';
 import 'package:trendys_sdk/models/responses/common/wallet.dart';
 import 'package:trendys_sdk/models/responses/influencers/get/influencer.dart';
-import 'package:trendys_sdk/models/responses/influencers/influencer.dart';
+import 'package:trendys_sdk/models/responses/influencers/list/influencer.dart';
 import 'package:trendys_sdk/models/responses/packages/list/package.dart';
 
 part 'influencer_provider.g.dart';

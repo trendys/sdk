@@ -15,7 +15,10 @@ Influencer _$InfluencerFromJson(Map<String, dynamic> json) {
     actions: (json['actions'] as List<dynamic>)
         .map((e) => Action.fromJson(e as Map<String, dynamic>))
         .toList(),
+    followers: json['followers'] as int,
+    packages: json['packages'] as int,
     avatarUrl: json['avatar_url'] as String?,
+    description: json['description'] as String?,
     genderPreferred: _$enumDecodeNullable(
         _$InfluencerGenderEnumMap, json['genderPreferred'],
         unknownValue: InfluencerGender.unknown),
@@ -35,6 +38,9 @@ Map<String, dynamic> _$InfluencerToJson(Influencer instance) =>
       'avatar_url': instance.avatarUrl,
       'country': instance.country,
       'actions': instance.actions,
+      'description': instance.description,
+      'followers': instance.followers,
+      'packages': instance.packages,
       'genderPreferred': _$InfluencerGenderEnumMap[instance.genderPreferred],
       'state': _$InfluencerStateEnumMap[instance.state],
       'wallets': instance.wallets,

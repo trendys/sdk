@@ -6,7 +6,7 @@ import 'package:trendys_sdk/models/responses/common/action.dart';
 import 'package:trendys_sdk/models/responses/common/destroy.dart';
 import 'package:trendys_sdk/models/responses/common/wallet.dart';
 import 'package:trendys_sdk/models/responses/influencers/get/influencer.dart';
-import 'package:trendys_sdk/models/responses/influencers/influencer.dart';
+import 'package:trendys_sdk/models/responses/influencers/list/influencer.dart';
 import 'package:trendys_sdk/models/responses/packages/list/package.dart';
 import 'package:trendys_sdk/providers/action/action_provider.dart';
 import 'package:trendys_sdk/providers/influencer/influencer_provider.dart';

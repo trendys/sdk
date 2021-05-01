@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:trendys_sdk/models/filters/component.dart';
 import 'package:trendys_sdk/models/filters/paginate.dart';
 import 'package:trendys_sdk/models/http_response.dart';
 import 'package:trendys_sdk/models/responses/common/component.dart';

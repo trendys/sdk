@@ -3,7 +3,7 @@ import 'package:trendys_sdk/enums/influencer_gender.dart';
 import 'package:trendys_sdk/enums/influencer_state.dart';
 import 'package:trendys_sdk/models/responses/common/action.dart';
 import 'package:trendys_sdk/models/responses/common/wallet.dart';
-import 'package:trendys_sdk/models/responses/influencers/influencer.dart';
+import 'package:trendys_sdk/models/responses/influencers/list/influencer.dart';
 
 part 'influencer.g.dart';
 
@@ -15,7 +15,10 @@ class Influencer extends InfluencerPartial {
     required String displayName,
     required String country,
     required List<Action> actions,
+    required int followers,
+    required int packages,
     String? avatarUrl,
+    String? description,
     this.genderPreferred,
     this.state,
     this.wallets,
@@ -26,6 +29,9 @@ class Influencer extends InfluencerPartial {
           country: country,
           actions: actions,
           avatarUrl: avatarUrl,
+          description: description,
+          followers: followers,
+          packages: packages,
         );
 
   @JsonKey(unknownEnumValue: InfluencerGender.unknown)
