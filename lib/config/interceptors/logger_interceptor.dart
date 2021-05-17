@@ -62,13 +62,14 @@ class LoggerInterceptor extends Interceptor {
     } else if (response != null) {
       String? body;
       final location = response.headers['Location']?.firstWhere((uri) => true, orElse: () => '');
+      final statusCode = response.statusCode ?? 0;
 
-      if (response.statusCode! >= 300 && response.statusCode! <= 399 && location != null && location.isNotEmpty) {
+      if (statusCode >= 300 && statusCode <= 399 && location != null && location.isNotEmpty) {
         body = '(redirected to $location)';
       } else if (response.data != null) {
         body = response.data.toString();
 
-        if (options.extra[Api.kPrivateResponseBody] == true) {
+        if (statusCode >= 200 && statusCode <= 299 && options.extra[Api.kPrivateResponseBody] == true) {
           body = '(private body with ${body.length} bytes)';
         } else if (options.responseType == ResponseType.bytes || options.responseType == ResponseType.stream) {
           body = '(${body.length} bytes)';
