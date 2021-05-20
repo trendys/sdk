@@ -8,8 +8,8 @@ class ChildCategory extends CategoryPartial {
   ChildCategory({
     required String id,
     required String slug,
-    String? name,
-    this.thumbnailUrl,
+    required String name,
+    required this.thumbnailUrl,
   }) : super(
           id: id,
           slug: slug,

@@ -8,8 +8,8 @@ class Brand extends BrandPartial {
   Brand({
     required String id,
     required String? name,
-    required String logoUrl,
-    this.description,
+    required String? logoUrl,
+    required this.description,
   }) : super(
           id: id,
           name: name,

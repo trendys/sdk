@@ -14,8 +14,8 @@ class InfluencerPartial extends base.InfluencerPartial {
     required this.followers,
     required this.packages,
     required List<Action> actions,
-    String? avatarUrl,
-    this.description,
+    required String? avatarUrl,
+    required this.description,
   }) : super(
           id: id,
           name: name,

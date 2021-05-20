@@ -62,4 +62,5 @@ const _$InfluencerGenderEnumMap = {
   InfluencerGender.all: 'all',
   InfluencerGender.women: 'women',
   InfluencerGender.man: 'man',
+  InfluencerGender.mixed: 'mixed',
 };

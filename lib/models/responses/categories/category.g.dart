@@ -10,7 +10,7 @@ CategoryPartial _$CategoryPartialFromJson(Map<String, dynamic> json) {
   return CategoryPartial(
     id: json['id'] as String,
     slug: json['slug'] as String,
-    name: json['name'] as String?,
+    name: json['name'] as String,
   );
 }
 

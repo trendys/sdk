@@ -11,7 +11,7 @@ class InfluencerPartial {
     required this.displayName,
     required this.country,
     required this.actions,
-    this.avatarUrl,
+    required this.avatarUrl,
   });
 
   final String id;

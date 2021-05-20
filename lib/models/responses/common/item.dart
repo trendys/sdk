@@ -15,8 +15,8 @@ class Item {
     required this.imageUrls,
     required this.brands,
     required this.componenings,
-    this.name,
-    this.description,
+    required this.name,
+    required this.description,
     this.city,
     this.country,
   });

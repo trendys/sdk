@@ -8,8 +8,8 @@ class Component {
   Component({
     required this.id,
     required this.type,
-    this.name,
-    this.iconUrl,
+    required this.name,
+    required this.iconUrl,
   });
 
   final String id;

@@ -10,7 +10,7 @@ class Category extends ChildCategory {
     required String slug,
     required String name,
     required this.children,
-    String? thumbnailUrl,
+    required String? thumbnailUrl,
   }) : super(
           id: id,
           slug: slug,

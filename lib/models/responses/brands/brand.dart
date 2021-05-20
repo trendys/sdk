@@ -6,8 +6,8 @@ part 'brand.g.dart';
 class BrandPartial {
   BrandPartial({
     required this.id,
-    this.name,
-    this.logoUrl,
+    required this.name,
+    required this.logoUrl,
   });
 
   final String id;

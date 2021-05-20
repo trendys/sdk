@@ -96,6 +96,7 @@ const _$PackageGenderEnumMap = {
   PackageGender.all: 'all',
   PackageGender.women: 'women',
   PackageGender.man: 'man',
+  PackageGender.mixed: 'mixed',
 };
 
 const _$PackageStateEnumMap = {

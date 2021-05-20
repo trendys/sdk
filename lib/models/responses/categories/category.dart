@@ -7,11 +7,11 @@ class CategoryPartial {
   CategoryPartial({
     required this.id,
     required this.slug,
-    this.name,
+    required this.name,
   });
 
   final String id;
-  final String? name;
+  final String name;
   final String slug;
 
   factory CategoryPartial.fromJson(Map<String, dynamic> json) => _$CategoryPartialFromJson(json);

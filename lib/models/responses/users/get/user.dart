@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:trendys_sdk/enums/user_gender.dart';
 
 part 'user.g.dart';
 
@@ -22,8 +23,8 @@ class User {
   @JsonKey(name: 'avatar_url')
   final String? avatarUrl;
   final String? country;
-  @JsonKey(name: 'gender_interested')
-  final String? genderInterested;
+  @JsonKey(name: 'gender_interested', unknownEnumValue: UserGender.unknown)
+  final UserGender? genderInterested;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

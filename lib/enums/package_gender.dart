@@ -3,4 +3,5 @@ enum PackageGender {
   all,
   women,
   man,
+  mixed,
 }

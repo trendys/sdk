@@ -3,4 +3,5 @@ enum InfluencerGender {
   all,
   women,
   man,
+  mixed,
 }
