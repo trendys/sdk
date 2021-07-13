@@ -15,6 +15,7 @@ abstract class AuthenticationProvider {
   factory AuthenticationProvider(Dio dio, {String baseUrl}) = _AuthenticationProvider;
 
   @POST('/guests/sign_in')
+  @PrivateResponseBody()
   Future<Guest> guestSignIn({@Body() requestModel.GuestCreate? guest});
 
   @POST('/users/sign_in')
@@ -22,6 +23,6 @@ abstract class AuthenticationProvider {
   Future<User> userSignIn(@Body() requestModel.SignIn body);
 
   @POST('/sessions')
-  @PrivateResponseBody()
+  @PrivateBody()
   Future<Session> refreshToken(@Body() requestModel.Session session);
 }

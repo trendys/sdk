@@ -26,10 +26,10 @@ class PrivateBody extends Extra {
 
 @immutable
 class PrivateRequestBody extends Extra {
-  const PrivateRequestBody() : super(Api.kAnnotationPrivateBody);
+  const PrivateRequestBody() : super(Api.kAnnotationPrivateRequestBody);
 }
 
 @immutable
 class PrivateResponseBody extends Extra {
-  const PrivateResponseBody() : super(Api.kAnnotationPrivateBody);
+  const PrivateResponseBody() : super(Api.kAnnotationPrivateResponseBody);
 }
