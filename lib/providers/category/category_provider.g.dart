@@ -19,10 +19,11 @@ class _CategoryProvider implements CategoryProvider {
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(paginate?.toJson() ?? <String, dynamic>{});
     queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<CategoryPartial>>>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+            Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/categories',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
@@ -37,11 +38,12 @@ class _CategoryProvider implements CategoryProvider {
   Future<Category> get(categoryId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Category>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/categories/$categoryId',
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/categories/${categoryId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Category.fromJson(_result.data!);

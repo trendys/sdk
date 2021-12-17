@@ -6,30 +6,30 @@ part of 'package.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PackagePartial _$PackagePartialFromJson(Map<String, dynamic> json) {
-  return PackagePartial(
-    id: json['id'] as String,
-    type: _$enumDecode(_$PackageTypeEnumMap, json['type'],
-        unknownValue: PackageType.unknown),
-    claps: json['claps'] as int,
-    favorites: json['favorites'] as int,
-    imageUrls:
-        (json['image_urls'] as List<dynamic>).map((e) => e as String).toList(),
-    actions: (json['actions'] as List<dynamic>)
-        .map((e) => Action.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    influencer:
-        InfluencerPartial.fromJson(json['influencer'] as Map<String, dynamic>),
-    categorizings: (json['categorizings'] as List<dynamic>)
-        .map((e) => Categorizing.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    gender: _$enumDecodeNullable(_$PackageGenderEnumMap, json['gender'],
-        unknownValue: PackageGender.unknown),
-    feedback: json['feedback'] as String?,
-    state: _$enumDecodeNullable(_$PackageStateEnumMap, json['state'],
-        unknownValue: PackageState.unknown),
-  );
-}
+PackagePartial _$PackagePartialFromJson(Map<String, dynamic> json) =>
+    PackagePartial(
+      id: json['id'] as String,
+      type: $enumDecode(_$PackageTypeEnumMap, json['type'],
+          unknownValue: PackageType.unknown),
+      claps: json['claps'] as int,
+      favorites: json['favorites'] as int,
+      imageUrls: (json['image_urls'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      actions: (json['actions'] as List<dynamic>)
+          .map((e) => Action.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      influencer: InfluencerPartial.fromJson(
+          json['influencer'] as Map<String, dynamic>),
+      categorizings: (json['categorizings'] as List<dynamic>)
+          .map((e) => Categorizing.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      gender: $enumDecodeNullable(_$PackageGenderEnumMap, json['gender'],
+          unknownValue: PackageGender.unknown),
+      feedback: json['feedback'] as String?,
+      state: $enumDecodeNullable(_$PackageStateEnumMap, json['state'],
+          unknownValue: PackageState.unknown),
+    );
 
 Map<String, dynamic> _$PackagePartialToJson(PackagePartial instance) =>
     <String, dynamic>{
@@ -46,32 +46,6 @@ Map<String, dynamic> _$PackagePartialToJson(PackagePartial instance) =>
       'image_urls': instance.imageUrls,
     };
 
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
 const _$PackageTypeEnumMap = {
   PackageType.unknown: 'unknown',
   PackageType.all: 'all',
@@ -79,17 +53,6 @@ const _$PackageTypeEnumMap = {
   PackageType.room: 'room',
   PackageType.trip: 'trip',
 };
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$PackageGenderEnumMap = {
   PackageGender.unknown: 'unknown',

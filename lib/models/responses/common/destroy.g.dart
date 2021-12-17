@@ -6,11 +6,9 @@ part of 'destroy.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Destroy _$DestroyFromJson(Map<String, dynamic> json) {
-  return Destroy(
-    success: json['success'] as bool,
-  );
-}
+Destroy _$DestroyFromJson(Map<String, dynamic> json) => Destroy(
+      success: json['success'] as bool,
+    );
 
 Map<String, dynamic> _$DestroyToJson(Destroy instance) => <String, dynamic>{
       'success': instance.success,

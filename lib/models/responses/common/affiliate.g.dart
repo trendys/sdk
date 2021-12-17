@@ -6,12 +6,10 @@ part of 'affiliate.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Affiliate _$AffiliateFromJson(Map<String, dynamic> json) {
-  return Affiliate(
-    url: json['url'] as String,
-    item: Item.fromJson(json['item'] as Map<String, dynamic>),
-  );
-}
+Affiliate _$AffiliateFromJson(Map<String, dynamic> json) => Affiliate(
+      url: json['url'] as String,
+      item: Item.fromJson(json['item'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$AffiliateToJson(Affiliate instance) => <String, dynamic>{
       'url': instance.url,

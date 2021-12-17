@@ -6,14 +6,12 @@ part of 'session.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Session _$SessionFromJson(Map<String, dynamic> json) {
-  return Session(
-    id: json['id'] as String,
-    lastActivityAt: DateTime.parse(json['last_activity_at'] as String),
-    accessToken: json['access_token'] as String,
-    refreshToken: json['refresh_token'] as String,
-  );
-}
+Session _$SessionFromJson(Map<String, dynamic> json) => Session(
+      id: json['id'] as String,
+      lastActivityAt: DateTime.parse(json['last_activity_at'] as String),
+      accessToken: json['access_token'] as String,
+      refreshToken: json['refresh_token'] as String,
+    );
 
 Map<String, dynamic> _$SessionToJson(Session instance) => <String, dynamic>{
       'id': instance.id,

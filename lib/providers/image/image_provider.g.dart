@@ -17,13 +17,14 @@ class _ImageProvider implements ImageProvider {
   Future<Destroy> destroy(imageId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Destroy>(Options(
-                method: 'DELETE', headers: <String, dynamic>{}, extra: _extra)
-            .compose(_dio.options, '/images/$imageId',
-                queryParameters: queryParameters, data: _data)
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<Destroy>(
+            Options(method: 'DELETE', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/images/${imageId}',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Destroy.fromJson(_result.data!);
     return value;
   }
@@ -35,11 +36,12 @@ class _ImageProvider implements ImageProvider {
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(paginate?.toJson() ?? <String, dynamic>{});
     queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<SuggestedItem>>>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/images/$imageId/suggested_items',
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/images/${imageId}/suggested_items',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!

@@ -6,18 +6,17 @@ part of 'influencer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-InfluencerPartial _$InfluencerPartialFromJson(Map<String, dynamic> json) {
-  return InfluencerPartial(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    displayName: json['display_name'] as String,
-    country: json['country'] as String,
-    actions: (json['actions'] as List<dynamic>)
-        .map((e) => Action.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    avatarUrl: json['avatar_url'] as String?,
-  );
-}
+InfluencerPartial _$InfluencerPartialFromJson(Map<String, dynamic> json) =>
+    InfluencerPartial(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      displayName: json['display_name'] as String,
+      country: json['country'] as String,
+      actions: (json['actions'] as List<dynamic>)
+          .map((e) => Action.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      avatarUrl: json['avatar_url'] as String?,
+    );
 
 Map<String, dynamic> _$InfluencerPartialToJson(InfluencerPartial instance) =>
     <String, dynamic>{

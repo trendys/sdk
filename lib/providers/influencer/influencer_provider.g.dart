@@ -20,10 +20,11 @@ class _InfluencerProvider implements InfluencerProvider {
     final queryParameters = <String, dynamic>{r'filters': filters};
     queryParameters.addAll(paginate?.toJson() ?? <String, dynamic>{});
     queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<InfluencerPartial>>>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+            Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/influencers',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
@@ -39,11 +40,12 @@ class _InfluencerProvider implements InfluencerProvider {
   Future<Influencer> get(influencerId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Influencer>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/influencers/$influencerId',
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/influencers/${influencerId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Influencer.fromJson(_result.data!);
@@ -56,11 +58,12 @@ class _InfluencerProvider implements InfluencerProvider {
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(paginate?.toJson() ?? <String, dynamic>{});
     queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<Wallet>>>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/influencers/$influencerId/wallets',
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/influencers/${influencerId}/wallets',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -77,11 +80,12 @@ class _InfluencerProvider implements InfluencerProvider {
     final queryParameters = <String, dynamic>{r'filters': filters};
     queryParameters.addAll(paginate?.toJson() ?? <String, dynamic>{});
     queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<PackagePartial>>>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/influencers/$influencerId/packages',
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/influencers/${influencerId}/packages',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -95,11 +99,12 @@ class _InfluencerProvider implements InfluencerProvider {
   Future<Action> follow(influencerId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Action>(
-            Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/influencers/$influencerId/action',
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/influencers/${influencerId}/action',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Action.fromJson(_result.data!);

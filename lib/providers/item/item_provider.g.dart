@@ -19,10 +19,11 @@ class _ItemProvider implements ItemProvider {
     final queryParameters = <String, dynamic>{r'filters': filters};
     queryParameters.addAll(paginate?.toJson() ?? <String, dynamic>{});
     queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<Item>>>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+            Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/items',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
@@ -37,10 +38,11 @@ class _ItemProvider implements ItemProvider {
   Future<Item> get(itemId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<Item>(
-        Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-            .compose(_dio.options, '/items/$itemId',
+        Options(method: 'GET', headers: _headers, extra: _extra)
+            .compose(_dio.options, '/items/${itemId}',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Item.fromJson(_result.data!);

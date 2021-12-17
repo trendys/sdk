@@ -17,11 +17,12 @@ class _WalletProvider implements WalletProvider {
   Future<Wallet> get(walletId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Wallet>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/wallets/$walletId',
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/wallets/${walletId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Wallet.fromJson(_result.data!);
@@ -35,11 +36,12 @@ class _WalletProvider implements WalletProvider {
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(paginate?.toJson() ?? <String, dynamic>{});
     queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<Transaction>>>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/wallets/$walletId/transactions',
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/wallets/${walletId}/transactions',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!

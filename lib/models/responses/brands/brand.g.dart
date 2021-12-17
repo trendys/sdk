@@ -6,13 +6,11 @@ part of 'brand.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BrandPartial _$BrandPartialFromJson(Map<String, dynamic> json) {
-  return BrandPartial(
-    id: json['id'] as String,
-    name: json['name'] as String?,
-    logoUrl: json['logo_url'] as String?,
-  );
-}
+BrandPartial _$BrandPartialFromJson(Map<String, dynamic> json) => BrandPartial(
+      id: json['id'] as String,
+      name: json['name'] as String?,
+      logoUrl: json['logo_url'] as String?,
+    );
 
 Map<String, dynamic> _$BrandPartialToJson(BrandPartial instance) =>
     <String, dynamic>{

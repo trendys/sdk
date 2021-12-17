@@ -6,13 +6,12 @@ part of 'category.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CategoryPartial _$CategoryPartialFromJson(Map<String, dynamic> json) {
-  return CategoryPartial(
-    id: json['id'] as String,
-    slug: json['slug'] as String,
-    name: json['name'] as String,
-  );
-}
+CategoryPartial _$CategoryPartialFromJson(Map<String, dynamic> json) =>
+    CategoryPartial(
+      id: json['id'] as String,
+      slug: json['slug'] as String,
+      name: json['name'] as String,
+    );
 
 Map<String, dynamic> _$CategoryPartialToJson(CategoryPartial instance) =>
     <String, dynamic>{

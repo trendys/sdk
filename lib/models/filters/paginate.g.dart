@@ -6,12 +6,11 @@ part of 'paginate.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PaginateFilters _$PaginateFiltersFromJson(Map<String, dynamic> json) {
-  return PaginateFilters(
-    page: json['page'] as int,
-    limit: json['limit'] as int?,
-  );
-}
+PaginateFilters _$PaginateFiltersFromJson(Map<String, dynamic> json) =>
+    PaginateFilters(
+      page: json['page'] as int? ?? 1,
+      limit: json['limit'] as int? ?? Api.kDefaultPageSize,
+    );
 
 Map<String, dynamic> _$PaginateFiltersToJson(PaginateFilters instance) =>
     <String, dynamic>{
